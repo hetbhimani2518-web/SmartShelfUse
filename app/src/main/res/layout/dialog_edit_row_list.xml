@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etEditListName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Row List Name"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/etEditPurchasePlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Purchase Place Name"
+        android:minHeight="48dp" />
+
+    <TextView
+        android:id="@+id/tvEditSelectedLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="No location selected"
+        android:textStyle="italic" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPickNewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/textColor"
+        android:text="Pick Location"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="50dp"
+        app:layout_constraintWidth_percent="0.85"
+        app:strokeColor="@color/black"
+        app:strokeWidth="1dp" />
+
+</LinearLayout>

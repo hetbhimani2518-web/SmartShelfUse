@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">SmartShelfUser</string>
+    <string name="profile">Profile</string>
+    <string name="search">Search</string>
+    <string name="shopping_list">Shopping List</string>
+    <string name="home">Home</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="webclientId">889468200866-fsk7c6ask5gbq8l6ie9lkodcsonorf0o.apps.googleusercontent.com</string>
+    <string name="location_permission_needed">Location permission needed to show your area.</string>
+    <string name="detecting_location_placeholder">Detecting location...</string>
+    <string name="unable_to_detect_location">Could not get current location. Please ensure location is enabled.</string>
+    <string name="error_detecting_location">Error detecting location.</string>
+    <string name="location_permission_denied">Location permission denied. Cannot show location.</string>
+    <string name="no_location_selected_placeholder">No location selected.</string>
+
+
+    <string name="my_google_map_apikey">AIzaSyAgKSysloY4Lp4HGTlsqHGXOtXQkujy5LM</string>
+
+    <string name="web_client_id">889468200866-fsk7c6ask5gbq8l6ie9lkodcsonorf0o.apps.googleusercontent.com</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome_to_smartshelf">Welcome to SmartShelf</string>
+    <string name="sign_in_or_sign_up_with_email">Sign In or Sign Up with Email</string>
+    <string name="or">OR</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="row_list">Row List</string>
+    <string name="create_new_row_shopping_list">Create New Row Shopping List</string>
+    <string name="list_name_e_g_weekly_groceries">List Name (e.g., Weekly Groceries)</string>
+    <string name="select_place_on_map">Select Place on Map</string>
+    <string name="confirm_location">Confirm Location</string>
+
+    <string-array name="item_categories">
+        <item>Bathroom</item>
+        <item>Kitchen</item>
+        <item>Electronics</item>
+        <item>Closet</item>
+        <item>Dairy Product</item>
+        <item>Produce</item>
+        <item>Pantry</item>
+        <item>Frozen Foods</item>
+        <item>Meat &amp; Seafood</item> <!-- Use &amp; for ampersand -->
+        <item>Bakery</item>
+        <item>Beverages</item>
+        <item>Cleaning Supplies</item>
+        <item>Household</item>
+        <item>Personal Care</item>
+        <item>Stationery</item> <!-- Note: Correct spelling is Stationery -->
+        <item>Pets</item>
+        <item>Baby Items</item>
+        <item>Office Supplies</item>
+        <item>Garden</item>
+        <item>Automotive</item>
+        <item>Other</item>
+    </string-array>
+</resources>
