@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context=".AddItemsRowListActivity">
 
+    <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,10 +19,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorAccent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/add_items_title"
+            app:titleTextColor="@color/off_white" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!-- Scrollable content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,25 +36,27 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
+            <!-- Title -->
             <TextView
                 android:id="@+id/textViewShoppingListTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="Add Item To Row List"
+                android:text="@string/add_item_to_row_list"
                 android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Item Name -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilItemName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Item Name (e.g., Milk)"
+                android:hint="@string/hint_item_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewShoppingListTitle">
@@ -62,15 +67,16 @@
                     android:layout_height="wrap_content"
                     android:inputType="textCapWords"
                     android:maxLines="1" />
-            </com.google.android.material.textfield.TextInputLayout>
 
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- Description -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilItemDescription"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="Description (optional)"
+                android:hint="@string/hint_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilItemName">
@@ -84,16 +90,18 @@
                     android:minLines="2" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Category Label -->
             <TextView
                 android:id="@+id/textViewCategoryLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Category"
+                android:text="@string/category"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilItemDescription" />
 
+            <!-- Spinner for Category -->
             <Spinner
                 android:id="@+id/spinnerItemCategory"
                 android:layout_width="0dp"
@@ -104,6 +112,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewCategoryLabel" />
 
+            <!-- Quantity -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilItemQuantity"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -111,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:hint="Quantity (e.g., 2)"
+                android:hint="@string/hint_quantity"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_quantity_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/spinnerItemCategory">
@@ -121,10 +130,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:maxLines="1"
-                    android:text="0" />
+                    android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Guideline -->
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_vertical_quantity_button"
                 android:layout_width="wrap_content"
@@ -132,14 +141,14 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.65" />
 
-            <!-- Dropdown for Quantity Unit -->
+            <!-- Quantity Unit Dropdown -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilItemQuantityUnit"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:hint="Unit"
+                android:hint="@string/hint_unit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/guideline_vertical_quantity_button"
                 app:layout_constraintTop_toTopOf="@id/tilItemQuantity">
@@ -149,11 +158,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cursorVisible="false"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:inputType="none"
                     tools:text="Kg" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Date/Time -->
             <TextView
                 android:id="@+id/textViewCurrentDateTimeItem"
                 android:layout_width="0dp"
@@ -165,19 +175,19 @@
                 app:layout_constraintTop_toBottomOf="@id/tilItemQuantity"
                 tools:text="Entry Time: Mon, 01 Jan 2024 10:00 AM" />
 
-            <Button
+            <!-- Add Button -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonAddItemToList"
-                style="@style/Widget.MaterialComponents.Button"
+                style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:backgroundTint="@color/textColor"
-                android:elevation="4dp"
-                android:text="Add Item"
-                android:textColor="#03DAC5"
+                android:layout_marginTop="12dp"
+                android:text="@string/add_item"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
                 android:textSize="18sp"
-                android:translationZ="8dp"
-                app:cornerRadius="50dp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/textColor"
                 app:icon="@drawable/ic_add_shopping_bag"
                 app:iconGravity="textStart"
                 app:iconPadding="8dp"
@@ -185,8 +195,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewCurrentDateTimeItem"
-                app:layout_constraintWidth_percent="0.85"
-                app:strokeColor="@color/black"
+                app:layout_constraintWidth_percent="1"
+                app:strokeColor="@color/colorAccent"
                 app:strokeWidth="1dp" />
 
             <!-- Divider -->
@@ -200,17 +210,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/buttonAddItemToList" />
 
-            <!-- List of Added Items -->
+            <!-- Header -->
             <TextView
                 android:id="@+id/textViewItemsInListHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Items in Current List"
+                android:text="@string/items_in_current_list"
                 android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dividerItems" />
 
+            <!-- RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewAddedItems"
                 android:layout_width="0dp"
@@ -218,21 +229,21 @@
                 android:layout_marginTop="8dp"
                 android:minHeight="100dp"
                 android:nestedScrollingEnabled="false"
+                android:paddingBottom="32dp"
                 app:layout_constrainedHeight="true"
-                app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewItemsInListHeader"
-                app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/item_added_to_row_list" />
 
+            <!-- Empty Message -->
             <TextView
                 android:id="@+id/textViewNoItemsAddedMessage"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center"
-                android:text="No items added yet. Use the form above."
+                android:text="@string/no_items_message"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -241,7 +252,6 @@
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

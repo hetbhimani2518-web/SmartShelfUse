@@ -34,11 +34,10 @@ public class ShoppingListComponentFragment extends Fragment {
     private List<FinalShoppingList> shoppingLists;
     private TextView textViewEmptyMessage;
     private DatabaseReference rowListRef;
-
     private DatabaseReference userRowListsRef;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
-    private SimpleDateFormat dateTimeFormatterForDisplay;
+    private ValueEventListener rowListsListener;
 
     public static ShoppingListComponentFragment newInstance() {
         return new ShoppingListComponentFragment();
@@ -64,29 +63,17 @@ public class ShoppingListComponentFragment extends Fragment {
 
         if (currentUser != null) {
             userRowListsRef = rowListRef.child(currentUser.getUid());
-        }
-
-        loadRowLists();
+            loadRowLists();
+        } else showLoginRequiredUI();
 
         return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        if (currentUser == null) {
-            showLoginRequiredUI();
-        } else {
-            loadRowLists();
-        }
     }
 
     private void showLoginRequiredUI() {
         Toast.makeText(getContext(), "Please login to manage shopping lists.", Toast.LENGTH_LONG).show();
         recyclerViewRowLists.setVisibility(View.GONE);
         textViewEmptyMessage.setVisibility(View.VISIBLE);
-        textViewEmptyMessage.setText("Please login to see your lists.");
-
+        textViewEmptyMessage.setText("Please login to manage shopping lists.");
     }
 
     private void loadRowLists() {
@@ -95,7 +82,7 @@ public class ShoppingListComponentFragment extends Fragment {
             return;
         }
 
-        userRowListsRef.addValueEventListener(new ValueEventListener() {
+        rowListsListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 shoppingLists.clear();
@@ -105,7 +92,6 @@ public class ShoppingListComponentFragment extends Fragment {
                     if (item != null) shoppingLists.add(item);
                 }
 
-                // 🔹 Sort newest first
                 Collections.sort(shoppingLists, (o1, o2) -> Long.compare(
                         o2.getCreatedAt() != null ? o2.getCreatedAt() : 0,
                         o1.getCreatedAt() != null ? o1.getCreatedAt() : 0
@@ -126,6 +112,15 @@ public class ShoppingListComponentFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        };
+        userRowListsRef.addValueEventListener(rowListsListener);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (userRowListsRef != null && rowListsListener != null) {
+            userRowListsRef.removeEventListener(rowListsListener);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.smartshelfuser;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FinalShoppingList {
@@ -13,6 +14,7 @@ public class FinalShoppingList {
     private List<ShoppingRowListItem> items;
 
     public FinalShoppingList() {
+        this.items = new ArrayList<>();
     }
 
     public FinalShoppingList(String shoppingListId, String userId, String rowListId, String listName, String purchasePlace, String location, Long createdAt, List<ShoppingRowListItem> items) {
@@ -23,7 +25,7 @@ public class FinalShoppingList {
         this.purchasePlace = purchasePlace;
         this.location = location;
         this.createdAt = createdAt;
-        this.items = items;
+        this.items = (items != null) ? items : new ArrayList<>();
     }
 
     public String getShoppingListId() {
@@ -75,11 +77,14 @@ public class FinalShoppingList {
     }
 
     public List<ShoppingRowListItem> getItems() {
+        if (items == null) {
+            items = new ArrayList<>();
+        }
         return items;
     }
 
     public void setItems(List<ShoppingRowListItem> items) {
-        this.items = items;
+        this.items = (items != null) ? items : new ArrayList<>();
     }
 
     public String getRowListId() {

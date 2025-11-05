@@ -1,5 +1,6 @@
 package com.example.smartshelfuser;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -40,12 +41,15 @@ public class AddedFinalShoppingListAdapter extends RecyclerView.Adapter<AddedFin
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AddedFinalShoppingListAdapter.ViewHolder holder, int position) {
         FinalShoppingList list = shoppingLists.get(position);
 
-        holder.textViewListName.setText(list.getListName());
-        holder.textViewPurchasePlace.setText("Purchase Place: " + list.getPurchasePlace());
+        holder.textViewListName.setText(list.getListName() != null ? list.getListName() : "Unnamed List");
+
+        holder.textViewPurchasePlace.setText("Purchase Place: " +
+                (list.getPurchasePlace() != null ? list.getPurchasePlace() : "N/A"));
 
         if (list.getCreatedAt() != null) {
             String formattedDate = dateFormatter.format(new Date(list.getCreatedAt()));
@@ -58,6 +62,7 @@ public class AddedFinalShoppingListAdapter extends RecyclerView.Adapter<AddedFin
             Intent intent = new Intent(context, AddItemToInventory.class);
             intent.putExtra("rowListId", list.getRowListId());
             intent.putExtra("listName", list.getListName());
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });
     }

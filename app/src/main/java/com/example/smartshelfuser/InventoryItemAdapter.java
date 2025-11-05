@@ -1,5 +1,6 @@
 package com.example.smartshelfuser;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,13 +35,16 @@ public class InventoryItemAdapter extends RecyclerView.Adapter<InventoryItemAdap
         return selectedItems;
     }
 
+
     @NonNull
     @Override
-    public InventoryItemAdapter.ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_inventory_with_checkbox, parent, false);
+    public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_inventory_with_checkbox, parent, false);
         return new ItemViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull InventoryItemAdapter.ItemViewHolder holder, int position) {
         ShoppingRowListItem item = itemList.get(position);

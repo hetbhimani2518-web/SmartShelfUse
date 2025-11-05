@@ -8,50 +8,69 @@
     android:fitsSystemWindows="true"
     tools:context=".AddItemToInventory">
 
-    <!-- Toolbar -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarAddInventory"
-        android:layout_width="0dp"
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbarAddItems_in"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:title="Add Items to Inventory"
-        android:titleTextColor="@android:color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarAddItems_item"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorAccent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Shopping List Item"
+            app:titleTextColor="@color/off_white" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- Search Bar -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchViewItems"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:iconifiedByDefault="false"
         android:queryHint="Search items..."
-        app:layout_constraintTop_toBottomOf="@id/toolbarAddInventory"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbarAddItems_in" />
 
     <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewInventoryItems"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/searchViewItems"
+        android:nestedScrollingEnabled="false"
+        android:padding="4dp"
         app:layout_constraintBottom_toTopOf="@id/btnAddToInventory"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_inventory_with_checkbox"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchViewItems"
+        tools:listitem="@layout/item_inventory_with_checkbox" />
 
     <!-- Add to Inventory Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddToInventory"
-        android:layout_width="wrap_content"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Add to Inventory"
-        android:backgroundTint="@color/colorAccent"
-        android:textColor="@android:color/white"
+        android:layout_margin="10dp"
+        android:text="@string/add_to_inventory"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:backgroundTint="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:strokeColor="@color/colorAccent"
+        app:strokeWidth="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

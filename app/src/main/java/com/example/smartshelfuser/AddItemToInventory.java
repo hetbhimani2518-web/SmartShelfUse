@@ -8,6 +8,10 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +36,8 @@ public class AddItemToInventory extends AppCompatActivity {
 
     private DatabaseReference rowListItemsRef, categoryRef, rowListRef;
     private String rowListId, listName, currentUserId;
-    private String purchasePlace, location;
-    private Long createdAt;
+//    private String purchasePlace, location;
+//    private Long createdAt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,13 @@ public class AddItemToInventory extends AppCompatActivity {
             Toast.makeText(this, "You must be logged in to add items.", Toast.LENGTH_SHORT).show();
             finish();
             return;
+        }
+
+        Toolbar toolbar = findViewById(R.id.toolbarAddItems_item);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getIntent().getStringExtra("listName"));
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
         rowListItemsRef = FirebaseDatabase.getInstance()
@@ -76,8 +87,8 @@ public class AddItemToInventory extends AppCompatActivity {
         recyclerViewItems.setAdapter(adapter);
 
         fetchItems();
-        btnAddToInventory.setOnClickListener(v -> addSelectedItemsToInventory());
         setupSearch();
+        btnAddToInventory.setOnClickListener(v -> addSelectedItemsToInventory());
     }
 
     private void fetchItems() {
@@ -100,23 +111,23 @@ public class AddItemToInventory extends AppCompatActivity {
             }
         });
 
-        rowListRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ShoppingRowList rowList = snapshot.getValue(ShoppingRowList.class);
-                if (rowList != null) {
-                    listName = rowList.getListName();
-                    purchasePlace = rowList.getPurchasePlace();
-                    location = rowList.getLocation();
-                    createdAt = rowList.getCreatedAt();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(AddItemToInventory.this, "Failed to load rowlist: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        rowListRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                ShoppingRowList rowList = snapshot.getValue(ShoppingRowList.class);
+//                if (rowList != null) {
+//                    listName = rowList.getListName();
+//                    purchasePlace = rowList.getPurchasePlace();
+//                    location = rowList.getLocation();
+//                    createdAt = rowList.getCreatedAt();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(AddItemToInventory.this, "Failed to load rowlist: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     private void setupSearch() {
@@ -139,6 +150,10 @@ public class AddItemToInventory extends AppCompatActivity {
 
     private void addSelectedItemsToInventory() {
         List<ShoppingRowListItem> selected = adapter.getSelectedItems();
+        if (selected.isEmpty()) {
+            Toast.makeText(this, "No items selected.", Toast.LENGTH_SHORT).show();
+            return;
+        }
         for (ShoppingRowListItem item : selected) {
             String category = item.getItemCategory();
             String itemId = item.getItemId();

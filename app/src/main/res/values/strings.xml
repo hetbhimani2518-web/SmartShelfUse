@@ -36,6 +36,26 @@
     <string name="list_name_e_g_weekly_groceries">List Name (e.g., Weekly Groceries)</string>
     <string name="select_place_on_map">Select Place on Map</string>
     <string name="confirm_location">Confirm Location</string>
+    <string name="purchase_place_e_g_target_local_market">Purchase Place (e.g., Target, Local Market)</string>
+    <string name="no_location_selected_place_holder">No Location Selected Place Holder</string>
+    <string name="date_time">Date/Time:</string>
+    <string name="create_row_list">Create Row List</string>
+    <string name="your_shopping_lists">Your Shopping Lists</string>
+    <string name="no_row_shopping_lists_yet_create_one_above">No row shopping lists yet. Create one above!</string>
+
+    <string name="add_items_title">Add Items</string>
+    <string name="add_item_to_row_list">Add Item To Row List</string>
+    <string name="hint_item_name">Item Name (e.g., Milk)</string>
+    <string name="hint_description">Description (optional)</string>
+    <string name="category">Category</string>
+    <string name="hint_quantity">Quantity (e.g., 2)</string>
+    <string name="hint_unit">Unit</string>
+    <string name="add_item">Add Item</string>
+    <string name="items_in_current_list">Items in Current List</string>
+    <string name="no_items_message">No items added yet. Use the form above.</string>
+    <string name="my_shopping_lists">My Shopping Lists</string>
+    <string name="add_to_inventory">Add to Inventory</string>
+
 
     <string-array name="item_categories">
         <item>Bathroom</item>
