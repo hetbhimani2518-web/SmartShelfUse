@@ -32,9 +32,8 @@ public class InventoryItemAdapter extends RecyclerView.Adapter<InventoryItemAdap
     }
 
     public List<ShoppingRowListItem> getSelectedItems() {
-        return selectedItems;
+        return new ArrayList<>(selectedItems);
     }
-
 
     @NonNull
     @Override

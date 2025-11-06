@@ -51,7 +51,6 @@ public class AddedRowItemsAdapter extends RecyclerView.Adapter<AddedRowItemsAdap
     static class AddedRowItemViewHolder extends RecyclerView.ViewHolder {
         TextView textName, textDescription, textCategory, textQuantity, textDateTime;
 
-
         public AddedRowItemViewHolder(@NonNull View itemView) {
             super(itemView);
 

@@ -55,6 +55,22 @@
     <string name="no_items_message">No items added yet. Use the form above.</string>
     <string name="my_shopping_lists">My Shopping Lists</string>
     <string name="add_to_inventory">Add to Inventory</string>
+    <string name="item_name">Item Name</string>
+    <string name="description_qty_category_added_date">Description | Qty | Category | Added Date</string>
+    <string name="welcome_user">Welcome, User!</string>
+    <string name="detecting_location_permission">Detecting Location Permission</string>
+    <string name="icon_shopping_list">Icon Shopping List</string>
+    <string name="icon_search_item">Icon Search Item</string>
+    <string name="search_item">Search Item</string>
+    <string name="icon_categories">Icon Categories</string>
+    <string name="inventory">Inventory</string>
+    <string name="icon_all_items">Icon All Items</string>
+    <string name="all_items">All Items</string>
+    <string name="categories">Categories</string>
+    <string name="icon_expiring">Icon Expiring</string>
+    <string name="expiring_items">Expiring Items</string>
+    <string name="icon_trash">Icon Trash</string>
+    <string name="trash">Trash</string>
 
 
     <string-array name="item_categories">

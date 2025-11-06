@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp">
 
@@ -16,7 +16,7 @@
         android:id="@+id/tvItemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Item Name"
+        android:text="@string/item_name"
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/checkBoxItem"
@@ -27,7 +27,7 @@
         android:id="@+id/tvItemDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Description | Qty | Category | Added Date"
+        android:text="@string/description_qty_category_added_date"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@id/tvItemName"
         app:layout_constraintTop_toBottomOf="@id/tvItemName"

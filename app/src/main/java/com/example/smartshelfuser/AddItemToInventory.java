@@ -30,14 +30,12 @@ public class AddItemToInventory extends AppCompatActivity {
 
     private RecyclerView recyclerViewItems;
     private InventoryItemAdapter adapter;
-    private List<ShoppingRowListItem> itemList = new ArrayList<>();
+    private final List<ShoppingRowListItem> itemList = new ArrayList<>();
     private SearchView searchView;
     private Button btnAddToInventory;
 
-    private DatabaseReference rowListItemsRef, categoryRef, rowListRef;
+    private DatabaseReference rowListItemsRef, categoryRef;
     private String rowListId, listName, currentUserId;
-//    private String purchasePlace, location;
-//    private Long createdAt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +47,7 @@ public class AddItemToInventory extends AppCompatActivity {
         listName = getIntent().getStringExtra("rowListName");
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser != null) {
+          if (currentUser != null) {
             currentUserId = currentUser.getUid();
         } else {
             Toast.makeText(this, "You must be logged in to add items.", Toast.LENGTH_SHORT).show();
@@ -64,13 +62,11 @@ public class AddItemToInventory extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
+        toolbar.setNavigationOnClickListener(v -> onBackPressed());
+
+
         rowListItemsRef = FirebaseDatabase.getInstance()
                 .getReference("RowListsItems")
-                .child(currentUserId)
-                .child(rowListId);
-
-        rowListRef = FirebaseDatabase.getInstance()
-                .getReference("RowLists")
                 .child(currentUserId)
                 .child(rowListId);
 
@@ -154,11 +150,27 @@ public class AddItemToInventory extends AppCompatActivity {
             Toast.makeText(this, "No items selected.", Toast.LENGTH_SHORT).show();
             return;
         }
+
         for (ShoppingRowListItem item : selected) {
             String category = item.getItemCategory();
             String itemId = item.getItemId();
-            categoryRef.child(category).child(itemId).setValue(item);
+
+            if (category != null && itemId != null) {
+                // Add to inventory
+                categoryRef.child(category).child(itemId).setValue(item)
+                        .addOnSuccessListener(aVoid -> {
+                            // Remove from RowListsItems permanently
+                            rowListItemsRef.child(itemId).removeValue();
+
+                            // Remove from local list instantly
+                            itemList.remove(item);
+                            adapter.updateList(new ArrayList<>(itemList));
+                        })
+                        .addOnFailureListener(e ->
+                                Toast.makeText(this, "Failed to add item: " + item.getItemName(), Toast.LENGTH_SHORT).show()
+                        );
+            }
         }
-        Toast.makeText(this, "Items added to inventory successfully", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Selected items added to inventory successfully.", Toast.LENGTH_SHORT).show();
     }
 }

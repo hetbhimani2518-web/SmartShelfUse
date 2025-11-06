@@ -18,7 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Welcome, User!"
+            android:text="@string/welcome_user"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
 
         <TextView
@@ -27,7 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:drawablePadding="8dp"
-            android:text="Detecting Location Permission"
+            android:text="@string/detecting_location_permission"
+            android:textSize="14sp"
+            android:textStyle="bold"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:visibility="gone"
             app:drawableStartCompat="@drawable/ic_location_main_pin"
@@ -57,19 +61,22 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Icon Shopping List"
+                        android:contentDescription="@string/icon_shopping_list"
                         android:src="@drawable/ic_main_shopping_list" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Shopping List"
+                        android:textSize="15sp"
+                        android:text="@string/shopping_list"
+
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -90,19 +97,21 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Icon Search Item"
+                        android:contentDescription="@string/icon_search_item"
                         android:src="@drawable/ic_search_item" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Search Locally"
+                        android:text="@string/search_item"
+                        android:textSize="15sp"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -123,20 +132,21 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Icon Categories"
+                        android:contentDescription="@string/icon_categories"
                         android:src="@drawable/ic_categories_home"/>
-
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Categories"
+                        android:text="@string/categories"
+                        android:textSize="15sp"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -157,20 +167,21 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Icon All Items"
+                        android:contentDescription="@string/icon_all_items"
                         android:src="@drawable/ic_all_items"/>
-
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="All Items"
+                        android:text="@string/inventory"
+                        android:textSize="15sp"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -191,19 +202,21 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Icon Expiring"
+                        android:contentDescription="@string/icon_expiring"
                         android:src="@drawable/ic_expiring" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Expiring Items"
+                        android:text="@string/expiring_items"
+                        android:textSize="15sp"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -224,19 +237,21 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    tools:ignore="UseCompoundDrawables">
 
                     <ImageView
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:contentDescription="Icon Trash"
+                        android:contentDescription="@string/icon_trash"
                         android:src="@drawable/ic_trash" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Trash"
+                        android:text="@string/trash"
+                        android:textSize="15sp"
                         android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
