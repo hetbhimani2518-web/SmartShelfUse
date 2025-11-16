@@ -80,11 +80,11 @@ public class ShoppingListMainActivity extends AppCompatActivity {
 //        button.setStrokeColorResource(R.color.colorAccent);
 //        button.setStrokeWidth(getResources().getDimensionPixelSize(R.dimen.button_outline_stroke_width));
         button.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.textColor));
-        button.setTextColor(ContextCompat.getColor(this, R.color.colorAccent));
+        button.setTextColor(ContextCompat.getColor(this, R.color.black));
     }
 
     private void setToFilled(MaterialButton button) {
-        button.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.colorAccent));
+        button.setBackgroundTintList(ContextCompat.getColorStateList(this, R.color.black));
         button.setTextColor(ContextCompat.getColor(this, R.color.textColor));
 //        button.setStrokeWidth(0);
     }

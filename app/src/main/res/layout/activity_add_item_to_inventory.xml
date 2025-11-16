@@ -20,7 +20,7 @@
             android:id="@+id/toolbarAddItems_item"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"
+            android:background="@color/black"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="Shopping List Item"
             app:titleTextColor="@color/off_white" />
@@ -61,14 +61,13 @@
         android:layout_margin="10dp"
         android:text="@string/add_to_inventory"
         android:textAllCaps="false"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/textColor"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:backgroundTint="@color/textColor"
+        app:backgroundTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/colorAccent"
-        app:strokeWidth="1dp" />
+        app:strokeWidth="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

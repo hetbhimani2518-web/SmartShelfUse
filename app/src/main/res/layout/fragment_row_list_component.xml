@@ -46,7 +46,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapWords"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColorHint="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,7 +68,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapWords"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColorHint="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -79,17 +81,14 @@
                 android:backgroundTint="@color/textColor"
                 android:text="@string/select_place_on_map"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilPurchasePlaceName"
-                app:layout_constraintWidth_percent="1"
-                app:strokeColor="@color/colorAccent"
-                app:strokeWidth="1dp" />
+                app:layout_constraintWidth_percent="1" />
 
-            <!-- This TextView will display the selected location address or coordinates -->
             <TextView
                 android:id="@+id/textViewSelectedLocation"
                 android:layout_width="0dp"
@@ -129,19 +128,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="@color/textColor"
+                android:backgroundTint="@color/black"
                 android:text="@string/create_row_list"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/textColor"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:cornerRadius="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textViewCurrentDateTime"
-                app:layout_constraintWidth_percent="1"
-                app:strokeColor="@color/colorAccent"
-                app:strokeWidth="1dp" />
+                app:layout_constraintWidth_percent="1" />
 
             <ProgressBar
                 android:id="@+id/progressBarCreateList"

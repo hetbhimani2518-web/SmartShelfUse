@@ -6,9 +6,15 @@
     android:fitsSystemWindows="true"
     tools:context=".ProfileFrg">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile" />
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:padding="12dp"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"/>
 
 </FrameLayout>

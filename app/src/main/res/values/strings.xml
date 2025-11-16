@@ -43,6 +43,11 @@
     <string name="your_shopping_lists">Your Shopping Lists</string>
     <string name="no_row_shopping_lists_yet_create_one_above">No row shopping lists yet. Create one above!</string>
 
+    <string name="unnamed_list">Unnamed List</string>
+    <string name="purchase_place_label">Purchase Place:</string>
+    <string name="na">N/A</string>
+    <string name="created_label">Created:</string>
+
     <string name="add_items_title">Add Items</string>
     <string name="add_item_to_row_list">Add Item To Row List</string>
     <string name="hint_item_name">Item Name (e.g., Milk)</string>
@@ -71,6 +76,20 @@
     <string name="expiring_items">Expiring Items</string>
     <string name="icon_trash">Icon Trash</string>
     <string name="trash">Trash</string>
+    <string name="create_account">Create Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="or_sign_up_with">Or sign up with</string>
+    <string name="sign_up_with_google">Sign Up with Google</string>
+    <string name="row_list_name">Row List Name</string>
+    <string name="purchase_place_name">Purchase Place Name</string>
+    <string name="no_location_selected">No location selected</string>
+    <string name="pick_location">Pick Location</string>
+    <string name="search_frg">Search FRG</string>
+    <string name="you_don_t_have_any_finalized_shopping_lists_yet">You don\'t have any finalized shopping lists yet.</string>
+    <string name="category_name">Category Name</string>
+    <string name="product_name">Product Name</string>
+    <string name="quantity_10_weight_500g">Quantity: 10, Weight: 500g</string>
 
 
     <string-array name="item_categories">

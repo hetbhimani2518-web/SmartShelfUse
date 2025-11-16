@@ -14,12 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartshelfuser.databinding.FragmentShoppingListComponentBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
@@ -27,23 +29,35 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
+
+
+
+
+
 public class ShoppingListComponentFragment extends Fragment {
 
+    private static final String FIREBASE_NODE_FINAL_LISTS = "RowLists";
+
     private RecyclerView recyclerViewRowLists;
+    private TextView textViewEmptyMessage;
+
     private AddedFinalShoppingListAdapter adapter;
     private List<FinalShoppingList> shoppingLists;
-    private TextView textViewEmptyMessage;
+
     private DatabaseReference rowListRef;
     private DatabaseReference userRowListsRef;
+    private Query orderedQuery;
+
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
-    private ValueEventListener rowListsListener;
+
+    private ValueEventListener listsListener;
 
     public static ShoppingListComponentFragment newInstance() {
         return new ShoppingListComponentFragment();
     }
 
-    @SuppressLint("MissingInflatedId")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,18 +65,20 @@ public class ShoppingListComponentFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-        rowListRef = FirebaseDatabase.getInstance().getReference("RowLists");
+
+        rowListRef = FirebaseDatabase.getInstance().getReference(FIREBASE_NODE_FINAL_LISTS);
 
         textViewEmptyMessage = view.findViewById(R.id.textViewEmptyMessageFinal);
         recyclerViewRowLists = view.findViewById(R.id.recyclerViewShoppingListsFinal);
 
         shoppingLists = new ArrayList<>();
-        adapter = new AddedFinalShoppingListAdapter(getContext(), shoppingLists);
-        recyclerViewRowLists.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new AddedFinalShoppingListAdapter();
+        recyclerViewRowLists.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerViewRowLists.setAdapter(adapter);
 
         if (currentUser != null) {
             userRowListsRef = rowListRef.child(currentUser.getUid());
+            orderedQuery = userRowListsRef.orderByChild("createdAt");
             loadRowLists();
         } else showLoginRequiredUI();
 
@@ -82,22 +98,27 @@ public class ShoppingListComponentFragment extends Fragment {
             return;
         }
 
-        rowListsListener = new ValueEventListener() {
+        listsListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                shoppingLists.clear();
+
+                List<FinalShoppingList> tempList = new ArrayList<>();
 
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    FinalShoppingList item = ds.getValue(FinalShoppingList.class);
-                    if (item != null) shoppingLists.add(item);
+                    FinalShoppingList list = ds.getValue(FinalShoppingList.class);
+
+                    if (list != null) {
+                        if (list.getShoppingListId() == null)
+                            list.setShoppingListId(ds.getKey());
+
+                        tempList.add(list);
+                    }
                 }
 
-                Collections.sort(shoppingLists, (o1, o2) -> Long.compare(
-                        o2.getCreatedAt() != null ? o2.getCreatedAt() : 0,
-                        o1.getCreatedAt() != null ? o1.getCreatedAt() : 0
-                ));
+                Collections.reverse(tempList);
 
-                adapter.notifyDataSetChanged();
+                shoppingLists = tempList;
+                adapter.submitList(new ArrayList<>(shoppingLists)); // ListAdapter requires a new list instance
 
                 if (shoppingLists.isEmpty()) {
                     textViewEmptyMessage.setVisibility(View.VISIBLE);
@@ -110,17 +131,61 @@ public class ShoppingListComponentFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(),
+                        "Error: " + error.getMessage(),
+                        Toast.LENGTH_SHORT).show();
             }
         };
-        userRowListsRef.addValueEventListener(rowListsListener);
+
+        orderedQuery.addValueEventListener(listsListener);
     }
+
+    //Nothing work then use this
+//    private void loadRowLists() {
+//        if (currentUser == null) {
+//            showLoginRequiredUI();
+//            return;
+//        }
+//
+//        rowListsListener = new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                shoppingLists.clear();
+//
+//                for (DataSnapshot ds : snapshot.getChildren()) {
+//                    FinalShoppingList item = ds.getValue(FinalShoppingList.class);
+//                    if (item != null) shoppingLists.add(item);
+//                }
+//
+//                Collections.sort(shoppingLists, (o1, o2) -> Long.compare(
+//                        o2.getCreatedAt() != null ? o2.getCreatedAt() : 0,
+//                        o1.getCreatedAt() != null ? o1.getCreatedAt() : 0
+//                ));
+//
+//                adapter.notifyDataSetChanged();
+//
+//                if (shoppingLists.isEmpty()) {
+//                    textViewEmptyMessage.setVisibility(View.VISIBLE);
+//                    recyclerViewRowLists.setVisibility(View.GONE);
+//                } else {
+//                    textViewEmptyMessage.setVisibility(View.GONE);
+//                    recyclerViewRowLists.setVisibility(View.VISIBLE);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(getContext(), "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        };
+//        userRowListsRef.addValueEventListener(rowListsListener);
+//    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (userRowListsRef != null && rowListsListener != null) {
-            userRowListsRef.removeEventListener(rowListsListener);
+        if (orderedQuery != null && listsListener != null) {
+            orderedQuery.removeEventListener(listsListener);
         }
     }
 }

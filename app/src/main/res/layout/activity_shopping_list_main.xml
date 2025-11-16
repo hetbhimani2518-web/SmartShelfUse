@@ -22,7 +22,7 @@
             android:id="@+id/toolbarShoppingList"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorAccent"
+            android:background="@color/black"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -45,12 +45,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:text="Shopping List"
+            android:text="@string/shopping_list"
             android:textColor="@color/textColor"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:backgroundTint="@color/colorAccent"
-            app:strokeWidth="0dp" />
+            app:backgroundTint="@color/black"
+            app:strokeWidth="0dp"
+            tools:ignore="VisualLintButtonSize" />
 
         <!-- Default: Row List button outlined -->
         <com.google.android.material.button.MaterialButton
@@ -60,13 +61,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
-            android:text="Row List"
+            android:text="@string/row_list"
             android:textStyle="bold"
-            android:textColor="#03DAC5"
+            android:textColor="@color/black"
             android:textSize="15sp"
             app:backgroundTint="@color/textColor"
-            app:strokeColor="@color/textColor"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="0dp"
+            tools:ignore="VisualLintButtonSize" />
     </LinearLayout>
 
     <!-- Fragment Container -->

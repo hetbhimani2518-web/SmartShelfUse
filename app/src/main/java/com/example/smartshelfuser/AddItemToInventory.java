@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,10 +33,10 @@ public class AddItemToInventory extends AppCompatActivity {
     private InventoryItemAdapter adapter;
     private final List<ShoppingRowListItem> itemList = new ArrayList<>();
     private SearchView searchView;
-    private Button btnAddToInventory;
+    private MaterialButton btnAddToInventory;
 
     private DatabaseReference rowListItemsRef, categoryRef;
-    private String rowListId, listName, currentUserId;
+    private String rowListId, currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,6 @@ public class AddItemToInventory extends AppCompatActivity {
         setContentView(R.layout.activity_add_item_to_inventory);
 
         rowListId = getIntent().getStringExtra("rowListId");
-        listName = getIntent().getStringExtra("rowListName");
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
           if (currentUser != null) {
@@ -64,7 +64,6 @@ public class AddItemToInventory extends AppCompatActivity {
 
         toolbar.setNavigationOnClickListener(v -> onBackPressed());
 
-
         rowListItemsRef = FirebaseDatabase.getInstance()
                 .getReference("RowListsItems")
                 .child(currentUserId)
@@ -78,7 +77,7 @@ public class AddItemToInventory extends AppCompatActivity {
         searchView = findViewById(R.id.searchViewItems);
         btnAddToInventory = findViewById(R.id.btnAddToInventory);
 
-        adapter = new InventoryItemAdapter(this, itemList);
+        adapter = new InventoryItemAdapter();
         recyclerViewItems.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewItems.setAdapter(adapter);
 
@@ -95,9 +94,13 @@ public class AddItemToInventory extends AppCompatActivity {
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     ShoppingRowListItem item = itemSnapshot.getValue(ShoppingRowListItem.class);
                     if (item != null) {
+                        if (item.getItemId() == null)
+                            item.setItemId(itemSnapshot.getKey());
+
                         itemList.add(item);
                     }
                 }
+                adapter.submitList(new ArrayList<>(itemList));
                 adapter.notifyDataSetChanged();
             }
 
@@ -138,20 +141,25 @@ public class AddItemToInventory extends AppCompatActivity {
                         filtered.add(item);
                     }
                 }
-                adapter.updateList(filtered);
+                adapter.submitList(filtered);
                 return true;
             }
         });
     }
 
     private void addSelectedItemsToInventory() {
-        List<ShoppingRowListItem> selected = adapter.getSelectedItems();
-        if (selected.isEmpty()) {
+        List<ShoppingRowListItem> selectedItems = new ArrayList<>();
+
+        for (ShoppingRowListItem item : adapter.getCurrentItems()) {
+            if (item.isSelected()) selectedItems.add(item);
+        }
+
+        if (selectedItems.isEmpty()) {
             Toast.makeText(this, "No items selected.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        for (ShoppingRowListItem item : selected) {
+        for (ShoppingRowListItem item : selectedItems) {
             String category = item.getItemCategory();
             String itemId = item.getItemId();
 
@@ -164,7 +172,7 @@ public class AddItemToInventory extends AppCompatActivity {
 
                             // Remove from local list instantly
                             itemList.remove(item);
-                            adapter.updateList(new ArrayList<>(itemList));
+                            adapter.submitList(new ArrayList<>(itemList));
                         })
                         .addOnFailureListener(e ->
                                 Toast.makeText(this, "Failed to add item: " + item.getItemName(), Toast.LENGTH_SHORT).show()

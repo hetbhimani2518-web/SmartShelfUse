@@ -19,9 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:text="@string/welcome_user"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvUserLocation"
@@ -30,22 +30,20 @@
             android:layout_marginBottom="24dp"
             android:drawablePadding="8dp"
             android:text="@string/detecting_location_permission"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             android:visibility="gone"
             app:drawableStartCompat="@drawable/ic_location_main_pin"
             tools:text="1600 Amphitheatre Parkway, Mountain View, CA"
             tools:visibility="visible" />
 
-        <!-- Grid Layout -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:columnCount="2"
+            android:columnCount="1"
             android:useDefaultMargins="true">
 
-            <!-- Card 1: Shopping List -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardCreateList"
                 android:layout_width="0dp"
@@ -74,86 +72,51 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:textSize="15sp"
                         android:text="@string/shopping_list"
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textSize="15sp" />
 
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 2: Search Locally -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardSearchLocal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:id="@+id/cardCategorizedItems"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_columnWeight="1"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                app:cardCornerRadius="8dp"-->
+<!--                app:cardElevation="4dp">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    tools:ignore="UseCompoundDrawables">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="16dp"-->
+<!--                    tools:ignore="UseCompoundDrawables">-->
 
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="@string/icon_search_item"
-                        android:src="@drawable/ic_search_item" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="48dp"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:contentDescription="@string/icon_categories"-->
+<!--                        android:src="@drawable/ic_categories_home" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/search_item"
-                        android:textSize="15sp"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card 3: Categories -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardCategorizedItems"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="@string/icon_categories"
-                        android:src="@drawable/ic_categories_home"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/categories"
-                        android:textSize="15sp"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:text="@string/categories"-->
+<!--                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"-->
+<!--                        android:textSize="15sp" />-->
+<!--                </LinearLayout>-->
+<!--            </com.google.android.material.card.MaterialCardView>-->
 
             <!-- Card 4: All Items -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardAllItems"
+                android:id="@+id/cardInventory"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -174,54 +137,19 @@
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:contentDescription="@string/icon_all_items"
-                        android:src="@drawable/ic_all_items"/>
+                        android:src="@drawable/ic_all_items" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/inventory"
-                        android:textSize="15sp"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textSize="15sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 5: Expiring Items -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardExpiringItems"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="16dp"
-                    tools:ignore="UseCompoundDrawables">
-
-                    <ImageView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:contentDescription="@string/icon_expiring"
-                        android:src="@drawable/ic_expiring" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/expiring_items"
-                        android:textSize="15sp"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card 6: Trash -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardDeletedItems"
                 android:layout_width="0dp"
@@ -251,12 +179,233 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/trash"
-                        android:textSize="15sp"
-                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+                        android:textStyle="bold"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        android:textSize="15sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
+
+        <!-- Grid Layout -->
+        <!--        <GridLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:columnCount="2"-->
+        <!--            android:useDefaultMargins="true">-->
+
+        <!--            &lt;!&ndash; Card 1: Shopping List &ndash;&gt;-->
+        <!--            <com.google.android.material.card.MaterialCardView-->
+        <!--                android:id="@+id/cardCreateList"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:clickable="true"-->
+        <!--                android:focusable="true"-->
+        <!--                app:cardCornerRadius="8dp"-->
+        <!--                app:cardElevation="4dp">-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    tools:ignore="UseCompoundDrawables">-->
+
+        <!--                    <ImageView-->
+        <!--                        android:layout_width="48dp"-->
+        <!--                        android:layout_height="48dp"-->
+        <!--                        android:contentDescription="@string/icon_shopping_list"-->
+        <!--                        android:src="@drawable/ic_main_shopping_list" />-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginTop="8dp"-->
+        <!--                        android:textSize="15sp"-->
+        <!--                        android:text="@string/shopping_list"-->
+
+        <!--                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />-->
+        <!--                </LinearLayout>-->
+        <!--            </com.google.android.material.card.MaterialCardView>-->
+
+        <!--            &lt;!&ndash; Card 2: Search Locally &ndash;&gt;-->
+        <!--            <com.google.android.material.card.MaterialCardView-->
+        <!--                android:id="@+id/cardSearchLocal"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:clickable="true"-->
+        <!--                android:focusable="true"-->
+        <!--                app:cardCornerRadius="8dp"-->
+        <!--                app:cardElevation="4dp">-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    tools:ignore="UseCompoundDrawables">-->
+
+        <!--                    <ImageView-->
+        <!--                        android:layout_width="48dp"-->
+        <!--                        android:layout_height="48dp"-->
+        <!--                        android:contentDescription="@string/icon_search_item"-->
+        <!--                        android:src="@drawable/ic_search_item" />-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginTop="8dp"-->
+        <!--                        android:text="@string/search_item"-->
+        <!--                        android:textSize="15sp"-->
+        <!--                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />-->
+        <!--                </LinearLayout>-->
+        <!--            </com.google.android.material.card.MaterialCardView>-->
+
+        <!--            &lt;!&ndash; Card 3: Categories &ndash;&gt;-->
+        <!--            <com.google.android.material.card.MaterialCardView-->
+        <!--                android:id="@+id/cardCategorizedItems"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:clickable="true"-->
+        <!--                android:focusable="true"-->
+        <!--                app:cardCornerRadius="8dp"-->
+        <!--                app:cardElevation="4dp">-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    tools:ignore="UseCompoundDrawables">-->
+
+        <!--                    <ImageView-->
+        <!--                        android:layout_width="48dp"-->
+        <!--                        android:layout_height="48dp"-->
+        <!--                        android:contentDescription="@string/icon_categories"-->
+        <!--                        android:src="@drawable/ic_categories_home"/>-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginTop="8dp"-->
+        <!--                        android:text="@string/categories"-->
+        <!--                        android:textSize="15sp"-->
+        <!--                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />-->
+        <!--                </LinearLayout>-->
+        <!--            </com.google.android.material.card.MaterialCardView>-->
+
+        <!--            &lt;!&ndash; Card 4: All Items &ndash;&gt;-->
+        <!--            <com.google.android.material.card.MaterialCardView-->
+        <!--                android:id="@+id/cardAllItems"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:clickable="true"-->
+        <!--                android:focusable="true"-->
+        <!--                app:cardCornerRadius="8dp"-->
+        <!--                app:cardElevation="4dp">-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    tools:ignore="UseCompoundDrawables">-->
+
+        <!--                    <ImageView-->
+        <!--                        android:layout_width="48dp"-->
+        <!--                        android:layout_height="48dp"-->
+        <!--                        android:contentDescription="@string/icon_all_items"-->
+        <!--                        android:src="@drawable/ic_all_items"/>-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginTop="8dp"-->
+        <!--                        android:text="@string/inventory"-->
+        <!--                        android:textSize="15sp"-->
+        <!--                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />-->
+        <!--                </LinearLayout>-->
+        <!--            </com.google.android.material.card.MaterialCardView>-->
+
+        <!--            &lt;!&ndash; Card 5: Expiring Items &ndash;&gt;-->
+        <!--            <com.google.android.material.card.MaterialCardView-->
+        <!--                android:id="@+id/cardExpiringItems"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:clickable="true"-->
+        <!--                android:focusable="true"-->
+        <!--                app:cardCornerRadius="8dp"-->
+        <!--                app:cardElevation="4dp">-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    tools:ignore="UseCompoundDrawables">-->
+
+        <!--                    <ImageView-->
+        <!--                        android:layout_width="48dp"-->
+        <!--                        android:layout_height="48dp"-->
+        <!--                        android:contentDescription="@string/icon_expiring"-->
+        <!--                        android:src="@drawable/ic_expiring" />-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginTop="8dp"-->
+        <!--                        android:text="@string/expiring_items"-->
+        <!--                        android:textSize="15sp"-->
+        <!--                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />-->
+        <!--                </LinearLayout>-->
+        <!--            </com.google.android.material.card.MaterialCardView>-->
+
+        <!--            &lt;!&ndash; Card 6: Trash &ndash;&gt;-->
+        <!--            <com.google.android.material.card.MaterialCardView-->
+        <!--                android:id="@+id/cardDeletedItems"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_columnWeight="1"-->
+        <!--                android:clickable="true"-->
+        <!--                android:focusable="true"-->
+        <!--                app:cardCornerRadius="8dp"-->
+        <!--                app:cardElevation="4dp">-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:padding="16dp"-->
+        <!--                    tools:ignore="UseCompoundDrawables">-->
+
+        <!--                    <ImageView-->
+        <!--                        android:layout_width="48dp"-->
+        <!--                        android:layout_height="48dp"-->
+        <!--                        android:contentDescription="@string/icon_trash"-->
+        <!--                        android:src="@drawable/ic_trash" />-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginTop="8dp"-->
+        <!--                        android:text="@string/trash"-->
+        <!--                        android:textSize="15sp"-->
+        <!--                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />-->
+        <!--                </LinearLayout>-->
+        <!--            </com.google.android.material.card.MaterialCardView>-->
+
+        <!--        </GridLayout>-->
 
     </LinearLayout>
 

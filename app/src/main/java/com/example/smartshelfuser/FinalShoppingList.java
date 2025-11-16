@@ -2,6 +2,7 @@ package com.example.smartshelfuser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FinalShoppingList {
     private String shoppingListId;
@@ -76,22 +77,38 @@ public class FinalShoppingList {
         this.createdAt = createdAt;
     }
 
-    public List<ShoppingRowListItem> getItems() {
-        if (items == null) {
-            items = new ArrayList<>();
-        }
-        return items;
-    }
-
-    public void setItems(List<ShoppingRowListItem> items) {
-        this.items = (items != null) ? items : new ArrayList<>();
-    }
-
     public String getRowListId() {
         return rowListId;
     }
 
     public void setRowListId(String rowListId) {
         this.rowListId = rowListId;
+    }
+
+    public List<ShoppingRowListItem> getItems() {
+        if (items == null) items = new ArrayList<>();
+        return items;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FinalShoppingList that = (FinalShoppingList) o;
+        // Use shoppingListId if available; fall back to rowListId for compatibility
+        String idThis = shoppingListId != null ? shoppingListId : rowListId;
+        String idThat = that.shoppingListId != null ? that.shoppingListId : that.rowListId;
+
+        return Objects.equals(idThis, idThat)
+                && Objects.equals(listName, that.listName)
+                && Objects.equals(purchasePlace, that.purchasePlace)
+                && Objects.equals(createdAt, that.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+        String id = shoppingListId != null ? shoppingListId : rowListId;
+        return Objects.hash(id, listName, purchasePlace, createdAt);
     }
 }

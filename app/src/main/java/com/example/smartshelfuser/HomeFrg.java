@@ -42,7 +42,7 @@ public class HomeFrg extends Fragment {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
 
     private TextView textViewWelcome, tvUserLocation;
-    private MaterialCardView cardCreateList, cardSearchLocal, cardCategorizedItems, cardDeletedItems;
+    private MaterialCardView cardCreateList, cardSearchLocal, cardCategorizedItems, cardDeletedItems , cardInventory;
 
     private FirebaseAuth mAuth;
     private FusedLocationProviderClient fusedLocationClient;
@@ -72,8 +72,9 @@ public class HomeFrg extends Fragment {
 
         textViewWelcome = view.findViewById(R.id.tvWelcome);
         cardCreateList = view.findViewById(R.id.cardCreateList);
-        cardSearchLocal = view.findViewById(R.id.cardSearchLocal);
-        cardCategorizedItems = view.findViewById(R.id.cardCategorizedItems);
+        cardInventory = view.findViewById(R.id.cardInventory);
+//        cardSearchLocal = view.findViewById(R.id.cardSearchLocal);
+//        cardCategorizedItems = view.findViewById(R.id.cardCategorizedItems);
         cardDeletedItems = view.findViewById(R.id.cardDeletedItems);
 
         tvUserLocation = view.findViewById(R.id.tvUserLocation);
@@ -107,15 +108,14 @@ public class HomeFrg extends Fragment {
             Intent intent = new Intent(getActivity(), ShoppingListMainActivity.class);
             startActivity(intent);
         });
-
-        cardSearchLocal.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Search Locally Clicked", Toast.LENGTH_SHORT).show());
-
-        cardCategorizedItems.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Categorized Items Clicked", Toast.LENGTH_SHORT).show());
-
-        cardDeletedItems.setOnClickListener(v ->
-                Toast.makeText(getContext(), "Deleted Items Clicked", Toast.LENGTH_SHORT).show());
+//        cardCategorizedItems.setOnClickListener(v -> {
+//            Intent intent = new Intent(getActivity() , CategoriesMainActivity.class);
+//            startActivity(intent);
+//        });
+        cardInventory.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity() , InventoryMainActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void checkAndRequestLocationPermission() {

@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="You don't have any finalized shopping lists yet."
+        android:text="@string/you_don_t_have_any_finalized_shopping_lists_yet"
         android:textSize="16sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"

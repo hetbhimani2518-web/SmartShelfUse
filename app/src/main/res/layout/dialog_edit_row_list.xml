@@ -10,7 +10,7 @@
         android:id="@+id/etEditListName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Row List Name"
+        android:hint="@string/row_list_name"
         android:minHeight="48dp" />
 
     <EditText
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Purchase Place Name"
+        android:hint="@string/purchase_place_name"
         android:minHeight="48dp" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="No location selected"
+        android:text="@string/no_location_selected"
         android:textStyle="italic" />
 
     <com.google.android.material.button.MaterialButton
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/textColor"
-        android:text="Pick Location"
+        android:text="@string/pick_location"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="18sp"

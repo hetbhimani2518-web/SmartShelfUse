@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartShelfUser">
         <activity
+            android:name=".InventoryMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CategoriesMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddItemToInventory"
             android:exported="false" />
         <activity

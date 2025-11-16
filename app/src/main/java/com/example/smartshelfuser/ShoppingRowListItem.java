@@ -17,6 +17,8 @@ public class ShoppingRowListItem {
     private String itemUnit;
     private String addedDateTime;
 
+    private boolean selected = false;
+
     public ShoppingRowListItem() {}
 
     public ShoppingRowListItem(String itemId, String itemName, String itemDescription,
@@ -52,6 +54,12 @@ public class ShoppingRowListItem {
     public String getAddedDateTime() { return addedDateTime; }
     public void setAddedDateTime(String addedDateTime) { this.addedDateTime = addedDateTime; }
 
+    public boolean isSelected() {
+        return selected;
+    }
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
